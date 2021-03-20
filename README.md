@@ -8,6 +8,9 @@ Client - SwiftUI (iOS)
 
 
 
+
+
+
 ## Steps
 
 - Django
@@ -33,6 +36,9 @@ If you want to create Product or Category, you can make that with your superuser
 
 
 
+
+
+
 ## References
 
 graphQL vs REST API - https://www.apollographql.com/blog/graphql-vs-rest-5d425123e34b/
@@ -47,4 +53,4 @@ graphQL CRUD - https://medium.com/analytics-vidhya/graphql-with-django-simple-ye
 
 Library - [Graphaello](https://github.com/nerdsupremacist/Graphaello)
 
-If I followed the official document, it was a bit tricky because it was different and there wasn't a lot of data. It was convenient to generate automatically related to Apollo, but there were many cases where I had to open the library source.
+When I followed the official document, it was a bit tricky because it was different and there wasn't a lot of data. It was convenient to generate automatically related to Apollo, but there were many cases where I had to open the library source.
