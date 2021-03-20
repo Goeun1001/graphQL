@@ -7,72 +7,72 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		066D57ADFBA6A90DADDBD493 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = F56D86D2791E0B095E8A3A0D /* Apollo */; };
-		5C6F101DED8D221209A17B3E /* LOCAL.graphql.json in Resources */ = {isa = PBXBuildFile; fileRef = AEAB5CD757B73F7E0B18EDA2 /* LOCAL.graphql.json */; };
-		D9672E532605A75F008095E6 /* swiftUIGraphQLApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9672E522605A75F008095E6 /* swiftUIGraphQLApp.swift */; };
-		D9672E552605A75F008095E6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9672E542605A75F008095E6 /* ContentView.swift */; };
-		D9672E572605A762008095E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9672E562605A762008095E6 /* Assets.xcassets */; };
-		D9672E5A2605A762008095E6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9672E592605A762008095E6 /* Preview Assets.xcassets */; };
-		E1818D5F37AEFF47E0B28875 /* Graphaello.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26669FD2D7179877B249DD8A /* Graphaello.swift */; };
+		0E915803D9AAD1C6799B4136 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 415FD8CE5AC4CB546A519DE1 /* Apollo */; };
+		9843DE1D75C44F961877BD38 /* Graphaello.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872847BEF6C13F279486C686 /* Graphaello.swift */; };
+		D9105C972606156400EC3DA9 /* ProductUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9105C962606156400EC3DA9 /* ProductUIApp.swift */; };
+		D9105C992606156400EC3DA9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9105C982606156400EC3DA9 /* ContentView.swift */; };
+		D9105C9B2606156800EC3DA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9105C9A2606156800EC3DA9 /* Assets.xcassets */; };
+		D9105C9E2606156800EC3DA9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9105C9D2606156800EC3DA9 /* Preview Assets.xcassets */; };
+		E52E4AC01BBE60E57EAE4A6E /* LOCAL.graphql.json in Resources */ = {isa = PBXBuildFile; fileRef = D9A92BD53E4B9FD7AEBB8ADC /* LOCAL.graphql.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		26669FD2D7179877B249DD8A /* Graphaello.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = Graphaello.swift; path = Graphaello.swift; sourceTree = "<group>"; };
-		AEAB5CD757B73F7E0B18EDA2 /* LOCAL.graphql.json */ = {isa = PBXFileReference; explicitFileType = text.json; lastKnownFileType = text.json; name = LOCAL.graphql.json; path = LOCAL.graphql.json; sourceTree = "<group>"; };
-		D9672E4F2605A75F008095E6 /* swiftUIGraphQL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swiftUIGraphQL.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D9672E522605A75F008095E6 /* swiftUIGraphQLApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftUIGraphQLApp.swift; sourceTree = "<group>"; };
-		D9672E542605A75F008095E6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		D9672E562605A762008095E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D9672E592605A762008095E6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		D9672E5B2605A762008095E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		872847BEF6C13F279486C686 /* Graphaello.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = Graphaello.swift; path = Graphaello.swift; sourceTree = "<group>"; };
+		D9105C932606156400EC3DA9 /* ProductUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProductUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9105C962606156400EC3DA9 /* ProductUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductUIApp.swift; sourceTree = "<group>"; };
+		D9105C982606156400EC3DA9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D9105C9A2606156800EC3DA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D9105C9D2606156800EC3DA9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D9105C9F2606156800EC3DA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D9A92BD53E4B9FD7AEBB8ADC /* LOCAL.graphql.json */ = {isa = PBXFileReference; explicitFileType = text.json; lastKnownFileType = text.json; name = LOCAL.graphql.json; path = LOCAL.graphql.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		D9672E4C2605A75F008095E6 /* Frameworks */ = {
+		D9105C902606156400EC3DA9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				066D57ADFBA6A90DADDBD493 /* Apollo in Frameworks */,
+				0E915803D9AAD1C6799B4136 /* Apollo in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D9672E462605A75F008095E6 = {
+		D9105C8A2606156400EC3DA9 = {
 			isa = PBXGroup;
 			children = (
-				D9672E512605A75F008095E6 /* swiftUIGraphQL */,
-				D9672E502605A75F008095E6 /* Products */,
-				26669FD2D7179877B249DD8A /* Graphaello.swift */,
-				AEAB5CD757B73F7E0B18EDA2 /* LOCAL.graphql.json */,
+				D9105C952606156400EC3DA9 /* ProductUI */,
+				D9105C942606156400EC3DA9 /* Products */,
+				872847BEF6C13F279486C686 /* Graphaello.swift */,
+				D9A92BD53E4B9FD7AEBB8ADC /* LOCAL.graphql.json */,
 			);
 			sourceTree = "<group>";
 		};
-		D9672E502605A75F008095E6 /* Products */ = {
+		D9105C942606156400EC3DA9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D9672E4F2605A75F008095E6 /* swiftUIGraphQL.app */,
+				D9105C932606156400EC3DA9 /* ProductUI.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D9672E512605A75F008095E6 /* swiftUIGraphQL */ = {
+		D9105C952606156400EC3DA9 /* ProductUI */ = {
 			isa = PBXGroup;
 			children = (
-				D9672E522605A75F008095E6 /* swiftUIGraphQLApp.swift */,
-				D9672E542605A75F008095E6 /* ContentView.swift */,
-				D9672E562605A762008095E6 /* Assets.xcassets */,
-				D9672E5B2605A762008095E6 /* Info.plist */,
-				D9672E582605A762008095E6 /* Preview Content */,
+				D9105C962606156400EC3DA9 /* ProductUIApp.swift */,
+				D9105C982606156400EC3DA9 /* ContentView.swift */,
+				D9105C9A2606156800EC3DA9 /* Assets.xcassets */,
+				D9105C9F2606156800EC3DA9 /* Info.plist */,
+				D9105C9C2606156800EC3DA9 /* Preview Content */,
 			);
-			path = swiftUIGraphQL;
+			path = ProductUI;
 			sourceTree = "<group>";
 		};
-		D9672E582605A762008095E6 /* Preview Content */ = {
+		D9105C9C2606156800EC3DA9 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				D9672E592605A762008095E6 /* Preview Assets.xcassets */,
+				D9105C9D2606156800EC3DA9 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -80,42 +80,42 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D9672E4E2605A75F008095E6 /* swiftUIGraphQL */ = {
+		D9105C922606156400EC3DA9 /* ProductUI */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D9672E5E2605A762008095E6 /* Build configuration list for PBXNativeTarget "swiftUIGraphQL" */;
+			buildConfigurationList = D9105CA22606156800EC3DA9 /* Build configuration list for PBXNativeTarget "ProductUI" */;
 			buildPhases = (
-				A265FAC87B0A033570C62274 /* Graphaello */,
-				D9672E4B2605A75F008095E6 /* Sources */,
-				D9672E4C2605A75F008095E6 /* Frameworks */,
-				D9672E4D2605A75F008095E6 /* Resources */,
+				A8E13292AB5650D2BD33E62C /* Graphaello */,
+				D9105C8F2606156400EC3DA9 /* Sources */,
+				D9105C902606156400EC3DA9 /* Frameworks */,
+				D9105C912606156400EC3DA9 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = swiftUIGraphQL;
+			name = ProductUI;
 			packageProductDependencies = (
-				F56D86D2791E0B095E8A3A0D /* Apollo */,
+				415FD8CE5AC4CB546A519DE1 /* Apollo */,
 			);
-			productName = swiftUIGraphQL;
-			productReference = D9672E4F2605A75F008095E6 /* swiftUIGraphQL.app */;
+			productName = ProductUI;
+			productReference = D9105C932606156400EC3DA9 /* ProductUI.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D9672E472605A75F008095E6 /* Project object */ = {
+		D9105C8B2606156400EC3DA9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
-					D9672E4E2605A75F008095E6 = {
+					D9105C922606156400EC3DA9 = {
 						CreatedOnToolsVersion = 12.4;
 					};
 				};
 			};
-			buildConfigurationList = D9672E4A2605A75F008095E6 /* Build configuration list for PBXProject "swiftUIGraphQL" */;
+			buildConfigurationList = D9105C8E2606156400EC3DA9 /* Build configuration list for PBXProject "ProductUI" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -123,34 +123,34 @@
 				en,
 				Base,
 			);
-			mainGroup = D9672E462605A75F008095E6;
+			mainGroup = D9105C8A2606156400EC3DA9;
 			packageReferences = (
-				292FC8C6AF65757098F5DACE /* XCRemoteSwiftPackageReference "apollo-ios" */,
+				A6E092C76BE9FCE1AEC5949C /* XCRemoteSwiftPackageReference "apollo-ios" */,
 			);
-			productRefGroup = D9672E502605A75F008095E6 /* Products */;
+			productRefGroup = D9105C942606156400EC3DA9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D9672E4E2605A75F008095E6 /* swiftUIGraphQL */,
+				D9105C922606156400EC3DA9 /* ProductUI */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		D9672E4D2605A75F008095E6 /* Resources */ = {
+		D9105C912606156400EC3DA9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9672E5A2605A762008095E6 /* Preview Assets.xcassets in Resources */,
-				D9672E572605A762008095E6 /* Assets.xcassets in Resources */,
-				5C6F101DED8D221209A17B3E /* LOCAL.graphql.json in Resources */,
+				D9105C9E2606156800EC3DA9 /* Preview Assets.xcassets in Resources */,
+				D9105C9B2606156800EC3DA9 /* Assets.xcassets in Resources */,
+				E52E4AC01BBE60E57EAE4A6E /* LOCAL.graphql.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		A265FAC87B0A033570C62274 /* Graphaello */ = {
+		A8E13292AB5650D2BD33E62C /* Graphaello */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -167,20 +167,20 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		D9672E4B2605A75F008095E6 /* Sources */ = {
+		D9105C8F2606156400EC3DA9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9672E552605A75F008095E6 /* ContentView.swift in Sources */,
-				D9672E532605A75F008095E6 /* swiftUIGraphQLApp.swift in Sources */,
-				E1818D5F37AEFF47E0B28875 /* Graphaello.swift in Sources */,
+				D9105C992606156400EC3DA9 /* ContentView.swift in Sources */,
+				D9105C972606156400EC3DA9 /* ProductUIApp.swift in Sources */,
+				9843DE1D75C44F961877BD38 /* Graphaello.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		D9672E5C2605A762008095E6 /* Debug */ = {
+		D9105CA02606156800EC3DA9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -241,7 +241,7 @@
 			};
 			name = Debug;
 		};
-		D9672E5D2605A762008095E6 /* Release */ = {
+		D9105CA12606156800EC3DA9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -296,47 +296,47 @@
 			};
 			name = Release;
 		};
-		D9672E5F2605A762008095E6 /* Debug */ = {
+		D9105CA32606156800EC3DA9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"swiftUIGraphQL/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"ProductUI/Preview Content\"";
 				DEVELOPMENT_TEAM = C2JSJLJ4FN;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = swiftUIGraphQL/Info.plist;
+				INFOPLIST_FILE = ProductUI/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jeonggo.swiftUIGraphQL;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jeonggo.ProductUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "GRAPHAELLO_SWIFT_UI_GRAPH_QL_TARGET $(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) GRAPHAELLO_PRODUCT_UI_TARGET";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		D9672E602605A762008095E6 /* Release */ = {
+		D9105CA42606156800EC3DA9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"swiftUIGraphQL/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"ProductUI/Preview Content\"";
 				DEVELOPMENT_TEAM = C2JSJLJ4FN;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = swiftUIGraphQL/Info.plist;
+				INFOPLIST_FILE = ProductUI/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jeonggo.swiftUIGraphQL;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jeonggo.ProductUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) GRAPHAELLO_SWIFT_UI_GRAPH_QL_TARGET";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "GRAPHAELLO_PRODUCT_UI_TARGET $(inherited)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -345,20 +345,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D9672E4A2605A75F008095E6 /* Build configuration list for PBXProject "swiftUIGraphQL" */ = {
+		D9105C8E2606156400EC3DA9 /* Build configuration list for PBXProject "ProductUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D9672E5C2605A762008095E6 /* Debug */,
-				D9672E5D2605A762008095E6 /* Release */,
+				D9105CA02606156800EC3DA9 /* Debug */,
+				D9105CA12606156800EC3DA9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D9672E5E2605A762008095E6 /* Build configuration list for PBXNativeTarget "swiftUIGraphQL" */ = {
+		D9105CA22606156800EC3DA9 /* Build configuration list for PBXNativeTarget "ProductUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D9672E5F2605A762008095E6 /* Debug */,
-				D9672E602605A762008095E6 /* Release */,
+				D9105CA32606156800EC3DA9 /* Debug */,
+				D9105CA42606156800EC3DA9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -366,7 +366,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		292FC8C6AF65757098F5DACE /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+		A6E092C76BE9FCE1AEC5949C /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
 			requirement = {
@@ -377,12 +377,12 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F56D86D2791E0B095E8A3A0D /* Apollo */ = {
+		415FD8CE5AC4CB546A519DE1 /* Apollo */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 292FC8C6AF65757098F5DACE /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			package = A6E092C76BE9FCE1AEC5949C /* XCRemoteSwiftPackageReference "apollo-ios" */;
 			productName = Apollo;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = D9672E472605A75F008095E6 /* Project object */;
+	rootObject = D9105C8B2606156400EC3DA9 /* Project object */;
 }

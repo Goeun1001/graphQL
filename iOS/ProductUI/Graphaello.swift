@@ -878,7 +878,7 @@ extension GraphQL {
 
 // MARK: - LOCAL
 
-#if GRAPHAELLO_SWIFT_UI_GRAPH_QL_TARGET
+#if GRAPHAELLO_PRODUCT_UI_TARGET
 
     struct LOCAL: API {
         let client: ApolloClient
@@ -938,7 +938,7 @@ extension GraphQL {
             static var deleteCategory: FragmentPath<LOCAL.DeleteCategory?> { .init() }
         }
 
-        static var allProducts: FragmentPath<[LOCAL.ProductType?]?> { .init() }
+        static var allProducts: FragmentPath<[LOCAL.ProductType]?> { .init() }
 
         static func product(id _: GraphQLArgument<String?> = .argument) -> FragmentPath<LOCAL.ProductType?> {
             return .init()
@@ -1157,15 +1157,64 @@ extension GraphQL {
 
 
 
+// MARK: - ProductCell
+
+#if GRAPHAELLO_PRODUCT_UI_TARGET
+
+    extension ApolloLOCAL.ProductCellProductType: Fragment {
+        typealias UnderlyingType = LOCAL.ProductType
+    }
+
+    extension ProductCell {
+        typealias ProductType = ApolloLOCAL.ProductCellProductType
+
+        init(productType: ProductType) {
+            self.init(name: GraphQL(productType.name),
+                      price: GraphQL(productType.price))
+        }
+
+        @ViewBuilder
+        static func placeholderView() -> some View {
+            if #available(iOS 14.0, macOS 11.0, tvOS 14.0, watchOS 7.0, *) {
+                Self(productType: .placeholder).disabled(true).redacted(reason: .placeholder)
+            } else {
+                BasicLoadingView()
+            }
+        }
+    }
+
+    extension ProductCell: Fragment {
+        typealias UnderlyingType = LOCAL.ProductType
+
+        static let placeholder = Self(productType: .placeholder)
+    }
+
+    extension ApolloLOCAL.ProductCellProductType {
+        func referencedSingleFragmentStruct() -> ProductCell {
+            return ProductCell(productType: self)
+        }
+    }
+
+    extension ApolloLOCAL.ProductCellProductType {
+        private static let placeholderMap: ResultMap = ["__typename": "ProductType", "name": "__GRAPHAELLO_PLACEHOLDER__", "price": "__GRAPHAELLO_PLACEHOLDER__"]
+
+        static let placeholder = ApolloLOCAL.ProductCellProductType(
+            unsafeResultMap: ApolloLOCAL.ProductCellProductType.placeholderMap
+        )
+    }
+
+#endif
+
+
 // MARK: - ContentView
 
-#if GRAPHAELLO_SWIFT_UI_GRAPH_QL_TARGET
+#if GRAPHAELLO_PRODUCT_UI_TARGET
 
     extension ContentView {
         typealias Data = ApolloLOCAL.ContentViewQuery.Data
 
         init(data: Data) {
-            self.init(name: GraphQL(data.product?.name))
+            self.init(products: GraphQL(data.allProducts?.map { ($0?.fragments.productCellProductType)! }))
         }
 
         @ViewBuilder
@@ -1179,12 +1228,12 @@ extension GraphQL {
     }
 
     extension LOCAL {
-        func contentView<Loading: View, Error: View>(id: String? = nil,
-                                                     
-                                                     @ViewBuilder loading: () -> Loading,
-                                                     @ViewBuilder error: @escaping (QueryError) -> Error) -> some View {
+        func contentView<Loading: View, Error: View>(
+            @ViewBuilder loading: () -> Loading,
+            @ViewBuilder error: @escaping (QueryError) -> Error
+        ) -> some View {
             return QueryRenderer(client: client,
-                                 query: ApolloLOCAL.ContentViewQuery(id: id),
+                                 query: ApolloLOCAL.ContentViewQuery(),
                                  loading: loading(),
                                  error: error) { (data: ApolloLOCAL.ContentViewQuery.Data) -> ContentView in
 
@@ -1192,11 +1241,11 @@ extension GraphQL {
             }
         }
 
-        func contentView<Loading: View>(id: String? = nil,
-                                        
-                                        @ViewBuilder loading: () -> Loading) -> some View {
+        func contentView<Loading: View>(
+            @ViewBuilder loading: () -> Loading
+        ) -> some View {
             return QueryRenderer(client: client,
-                                 query: ApolloLOCAL.ContentViewQuery(id: id),
+                                 query: ApolloLOCAL.ContentViewQuery(),
                                  loading: loading(),
                                  error: { BasicErrorView(error: $0) }) { (data: ApolloLOCAL.ContentViewQuery.Data) -> ContentView in
 
@@ -1204,11 +1253,11 @@ extension GraphQL {
             }
         }
 
-        func contentView<Error: View>(id: String? = nil,
-                                      
-                                      @ViewBuilder error: @escaping (QueryError) -> Error) -> some View {
+        func contentView<Error: View>(
+            @ViewBuilder error: @escaping (QueryError) -> Error
+        ) -> some View {
             return QueryRenderer(client: client,
-                                 query: ApolloLOCAL.ContentViewQuery(id: id),
+                                 query: ApolloLOCAL.ContentViewQuery(),
                                  loading: ContentView.placeholderView(),
                                  error: error) { (data: ApolloLOCAL.ContentViewQuery.Data) -> ContentView in
 
@@ -1216,9 +1265,9 @@ extension GraphQL {
             }
         }
 
-        func contentView(id: String? = nil) -> some View {
+        func contentView() -> some View {
             return QueryRenderer(client: client,
-                                 query: ApolloLOCAL.ContentViewQuery(id: id),
+                                 query: ApolloLOCAL.ContentViewQuery(),
                                  loading: ContentView.placeholderView(),
                                  error: { BasicErrorView(error: $0) }) { (data: ApolloLOCAL.ContentViewQuery.Data) -> ContentView in
 
@@ -1228,10 +1277,99 @@ extension GraphQL {
     }
 
     extension ApolloLOCAL.ContentViewQuery.Data {
-        private static let placeholderMap: ResultMap = ["product": ["__typename": "ProductType", "name": "__GRAPHAELLO_PLACEHOLDER__"]]
+        private static let placeholderMap: ResultMap = ["allProducts": Array(repeating: ["__typename": "ProductType", "name": "__GRAPHAELLO_PLACEHOLDER__", "price": "__GRAPHAELLO_PLACEHOLDER__"], count: 5) as [ResultMap]]
 
         static let placeholder = ApolloLOCAL.ContentViewQuery.Data(
             unsafeResultMap: ApolloLOCAL.ContentViewQuery.Data.placeholderMap
+        )
+    }
+
+#endif
+
+
+// MARK: - ProductRow
+
+#if GRAPHAELLO_PRODUCT_UI_TARGET
+
+    extension ProductRow {
+        typealias Data = ApolloLOCAL.ProductRowQuery.Data
+
+        init(api: LOCAL,
+             data: Data) {
+            self.init(api: api,
+                      name: GraphQL(data.product?.name),
+                      price: GraphQL(data.product?.price))
+        }
+
+        @ViewBuilder
+        static func placeholderView(api: LOCAL) -> some View {
+            if #available(iOS 14.0, macOS 11.0, tvOS 14.0, watchOS 7.0, *) {
+                Self(api: api,
+                     data: .placeholder).disabled(true).redacted(reason: .placeholder)
+            } else {
+                BasicLoadingView()
+            }
+        }
+    }
+
+    extension LOCAL {
+        func productRow<Loading: View, Error: View>(id: String? = nil,
+                                                    
+                                                    @ViewBuilder loading: () -> Loading,
+                                                    @ViewBuilder error: @escaping (QueryError) -> Error) -> some View {
+            return QueryRenderer(client: client,
+                                 query: ApolloLOCAL.ProductRowQuery(id: id),
+                                 loading: loading(),
+                                 error: error) { (data: ApolloLOCAL.ProductRowQuery.Data) -> ProductRow in
+
+                ProductRow(api: self,
+                           data: data)
+            }
+        }
+
+        func productRow<Loading: View>(id: String? = nil,
+                                       
+                                       @ViewBuilder loading: () -> Loading) -> some View {
+            return QueryRenderer(client: client,
+                                 query: ApolloLOCAL.ProductRowQuery(id: id),
+                                 loading: loading(),
+                                 error: { BasicErrorView(error: $0) }) { (data: ApolloLOCAL.ProductRowQuery.Data) -> ProductRow in
+
+                ProductRow(api: self,
+                           data: data)
+            }
+        }
+
+        func productRow<Error: View>(id: String? = nil,
+                                     
+                                     @ViewBuilder error: @escaping (QueryError) -> Error) -> some View {
+            return QueryRenderer(client: client,
+                                 query: ApolloLOCAL.ProductRowQuery(id: id),
+                                 loading: ProductRow.placeholderView(api: self),
+                                 error: error) { (data: ApolloLOCAL.ProductRowQuery.Data) -> ProductRow in
+
+                ProductRow(api: self,
+                           data: data)
+            }
+        }
+
+        func productRow(id: String? = nil) -> some View {
+            return QueryRenderer(client: client,
+                                 query: ApolloLOCAL.ProductRowQuery(id: id),
+                                 loading: ProductRow.placeholderView(api: self),
+                                 error: { BasicErrorView(error: $0) }) { (data: ApolloLOCAL.ProductRowQuery.Data) -> ProductRow in
+
+                ProductRow(api: self,
+                           data: data)
+            }
+        }
+    }
+
+    extension ApolloLOCAL.ProductRowQuery.Data {
+        private static let placeholderMap: ResultMap = ["product": ["__typename": "ProductType", "name": "__GRAPHAELLO_PLACEHOLDER__", "price": "__GRAPHAELLO_PLACEHOLDER__"]]
+
+        static let placeholder = ApolloLOCAL.ProductRowQuery.Data(
+            unsafeResultMap: ApolloLOCAL.ProductRowQuery.Data.placeholderMap
         )
     }
 
@@ -1254,15 +1392,125 @@ public enum ApolloLOCAL {
     /// The raw GraphQL definition of this operation.
     public let operationDefinition: String =
       """
-      query ContentView($id: ID) {
-        product(id: $id) {
+      query ContentView {
+        allProducts {
           __typename
-          name
+          ...ProductCellProductType
         }
       }
       """
 
     public let operationName: String = "ContentView"
+
+    public var queryDocument: String {
+      var document: String = operationDefinition
+      document.append("\n" + ProductCellProductType.fragmentDefinition)
+      return document
+    }
+
+    public init() {
+    }
+
+    public struct Data: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["Query"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("allProducts", type: .list(.object(AllProduct.selections))),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(allProducts: [AllProduct?]? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Query", "allProducts": allProducts.flatMap { (value: [AllProduct?]) -> [ResultMap?] in value.map { (value: AllProduct?) -> ResultMap? in value.flatMap { (value: AllProduct) -> ResultMap in value.resultMap } } }])
+      }
+
+      public var allProducts: [AllProduct?]? {
+        get {
+          return (resultMap["allProducts"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [AllProduct?] in value.map { (value: ResultMap?) -> AllProduct? in value.flatMap { (value: ResultMap) -> AllProduct in AllProduct(unsafeResultMap: value) } } }
+        }
+        set {
+          resultMap.updateValue(newValue.flatMap { (value: [AllProduct?]) -> [ResultMap?] in value.map { (value: AllProduct?) -> ResultMap? in value.flatMap { (value: AllProduct) -> ResultMap in value.resultMap } } }, forKey: "allProducts")
+        }
+      }
+
+      public struct AllProduct: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["ProductType"]
+
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLFragmentSpread(ProductCellProductType.self),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(name: String, price: String) {
+          self.init(unsafeResultMap: ["__typename": "ProductType", "name": name, "price": price])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var fragments: Fragments {
+          get {
+            return Fragments(unsafeResultMap: resultMap)
+          }
+          set {
+            resultMap += newValue.resultMap
+          }
+        }
+
+        public struct Fragments {
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public var productCellProductType: ProductCellProductType {
+            get {
+              return ProductCellProductType(unsafeResultMap: resultMap)
+            }
+            set {
+              resultMap += newValue.resultMap
+            }
+          }
+        }
+      }
+    }
+  }
+
+  public final class ProductRowQuery: GraphQLQuery {
+    /// The raw GraphQL definition of this operation.
+    public let operationDefinition: String =
+      """
+      query ProductRow($id: ID) {
+        product(id: $id) {
+          __typename
+          name
+          price
+        }
+      }
+      """
+
+    public let operationName: String = "ProductRow"
 
     public var id: GraphQLID?
 
@@ -1309,6 +1557,7 @@ public enum ApolloLOCAL {
           return [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
+            GraphQLField("price", type: .nonNull(.scalar(String.self))),
           ]
         }
 
@@ -1318,8 +1567,8 @@ public enum ApolloLOCAL {
           self.resultMap = unsafeResultMap
         }
 
-        public init(name: String) {
-          self.init(unsafeResultMap: ["__typename": "ProductType", "name": name])
+        public init(name: String, price: String) {
+          self.init(unsafeResultMap: ["__typename": "ProductType", "name": name, "price": price])
         }
 
         public var __typename: String {
@@ -1339,6 +1588,74 @@ public enum ApolloLOCAL {
             resultMap.updateValue(newValue, forKey: "name")
           }
         }
+
+        public var price: String {
+          get {
+            return resultMap["price"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "price")
+          }
+        }
+      }
+    }
+  }
+
+  public struct ProductCellProductType: GraphQLFragment {
+    /// The raw GraphQL definition of this fragment.
+    public static let fragmentDefinition: String =
+      """
+      fragment ProductCellProductType on ProductType {
+        __typename
+        name
+        price
+      }
+      """
+
+    public static let possibleTypes: [String] = ["ProductType"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("name", type: .nonNull(.scalar(String.self))),
+        GraphQLField("price", type: .nonNull(.scalar(String.self))),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(name: String, price: String) {
+      self.init(unsafeResultMap: ["__typename": "ProductType", "name": name, "price": price])
+    }
+
+    public var __typename: String {
+      get {
+        return resultMap["__typename"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "__typename")
+      }
+    }
+
+    public var name: String {
+      get {
+        return resultMap["name"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "name")
+      }
+    }
+
+    public var price: String {
+      get {
+        return resultMap["price"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "price")
       }
     }
   }
